@@ -1,4 +1,6 @@
 Wijnen = new Meteor.Collection("wijnen");
+Landen = new Meteor.Collection("landen");
+landen = {};
 
 function wijn(naam, appellatie, streek, land, druif, kleur, soort) {
   this.naam = naam;
@@ -11,6 +13,13 @@ function wijn(naam, appellatie, streek, land, druif, kleur, soort) {
 }
 
 if (Meteor.isClient) {
+  Meteor.startup = function() {
+    Meteor.atuorun = function() {
+      landen = _(Landen.find().fetch()).pluck("naam");
+      console.log(landen);
+    }
+  };
+  
   Template.wijnapp.wijnen = function () {
     return Wijnen.find({}, {sort: {naam: 1}});
   };
@@ -41,11 +50,9 @@ if (Meteor.isClient) {
     return Wijnen.findOne(Session.get("selected_wijn"));
   };
   Template.edit_wijn.rendered = function () {
-    return Meteor.defer(function () {
-      return $('#land').typeahead({
-        source: ['Frankrijk','Italië','Oostenrijk','Duitsland','Chili','Argentinië']
-      }) 
-    })
+    return $('#land').typeahead({
+      source: function() {return _(Landen.find().fetch()).pluck("naam")}
+    }) 
   };
   
   Handlebars.registerHelper('selected', function(foo, bar) {
