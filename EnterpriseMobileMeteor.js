@@ -38,9 +38,12 @@ if (Meteor.isClient) {
   });
 
   Template.edit_wijn.selected_wijn = function () {
-    var wijn = Wijnen.findOne(Session.get("selected_wijn"));
-    return wijn;
+    return Wijnen.findOne(Session.get("selected_wijn"));
   };
+  
+  Handlebars.registerHelper('selected', function(foo, bar) {
+    return foo == bar ? 'selected' : '';
+  });
   
   Template.wijn.selected = function () {
     return Session.equals("selected_wijn", this._id) ? "selected" : '';

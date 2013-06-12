@@ -26,18 +26,18 @@
 <template name="edit_wijn">
   <div class="details">
     <form id="edit_wijn_form">
-      <label for="naam">Naam:<label><input id="naam" type="text" value="{{selected_wijn.naam}}"/>
-      <label for="appellatie">Appellatie:<label><input id="appellatie" type="text" value="{{selected_wijn.appellatie}}"/>
-      <label for="streek">Streek:<label><input id="streek" type="text" value="{{selected_wijn.streek}}"/>
-      <label for="land">Land:<label><input id="land" type="text" value="{{selected_wijn.land}}"/>
-      <label for="druif">Druif:<label><input id="druif" type="text" value="{{selected_wijn.druif}}"/>
-      <label for="kleur">Kleur:<label>
+      <label for="naam">Naam:</label><input id="naam" type="text" value="{{selected_wijn.naam}}"/>
+      <label for="appellatie">Appellatie:</label><input id="appellatie" type="text" value="{{selected_wijn.appellatie}}"/>
+      <label for="streek">Streek:</label><input id="streek" type="text" value="{{selected_wijn.streek}}"/>
+      <label for="land">Land:</label><input id="land" type="text" value="{{selected_wijn.land}}"/>
+      <label for="druif">Druif:</label><input id="druif" type="text" value="{{selected_wijn.druif}}"/>
+      <label for="kleur">Kleur:</label>
         <select id="kleur" value="{{selected_wijn.kleur}}">
-          <option value="wit">Wit</option>
-          <option value="rosé">Rosé</option>
-          <option value="rood">Rood</option>
+          <option value="wit" {{selected selected_wijn.kleur "wit"}}>Wit</option>
+          <option value="rosé" {{selected selected_wijn.kleur "rosé"}}>Rosé</option>
+          <option value="rood" {{selected selected_wijn.kleur "rood"}}>Rood</option>
         </select>
-      <label for="soort">Soort:<label><input id="soort" type="text" value="{{selected_wijn.soort}}"/>
+      <label for="soort">Soort:</label><input id="soort" type="text" value="{{selected_wijn.soort}}"/>
       <br/>
       <input type="button" class="save btn btn-primary" value="Opslaan">
       <input type="button" class="cancel btn" value="Annuleren">
