@@ -40,6 +40,13 @@ if (Meteor.isClient) {
   Template.edit_wijn.selected_wijn = function () {
     return Wijnen.findOne(Session.get("selected_wijn"));
   };
+  Template.edit_wijn.rendered = function () {
+    return Meteor.defer(function () {
+      return $('#land').typeahead({
+        source: ['Frankrijk','Italië','Oostenrijk','Duitsland','Chili','Argentinië']
+      }) 
+    })
+  };
   
   Handlebars.registerHelper('selected', function(foo, bar) {
     return foo == bar ? 'selected' : '';
