@@ -20,8 +20,20 @@ if (Meteor.isClient) {
     }
   };
   
+  Template.wijnapp.events({
+    'click button.search': function() {
+      Session.set("search_query", $(".search-query").val());
+    }
+  })
+  
   Template.wijnapp.wijnen = function () {
-    return Wijnen.find({}, {sort: {naam: 1}});
+    query = Session.get("search_query");
+    Session.set("search_query", query);
+    if (!query) {
+      return Wijnen.find({}, {sort: {naam: 1}});
+    } else {
+      return Wijnen.find({naam: {$regex: query}}, {sort: {naam: 1}});
+    }
   };
 
   Template.wijnapp.selected_wijn = function () {
@@ -30,7 +42,7 @@ if (Meteor.isClient) {
   };
   
   Template.edit_wijn.events({
-    'click input.save' : function() {
+    'click button.save' : function() {
       Wijnen.update( {_id: Session.get("selected_wijn") }, { $set: {
         naam: $("#naam").val(),
         appellatie: $('#appellatie').val(),
@@ -41,7 +53,7 @@ if (Meteor.isClient) {
         soort: $('#soort').val()
       } } );
     },
-    'click input.cancel' : function() {
+    'click button.cancel' : function() {
       Session.set("selected_wijn", '');
     }
   });
