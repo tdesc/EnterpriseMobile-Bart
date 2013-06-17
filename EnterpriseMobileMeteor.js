@@ -2,22 +2,6 @@ Wijnen = new Meteor.Collection("wijnen");
 Landen = new Meteor.Collection("landen");
 landen = {};
 
-function wijn(naam, appellatie, streek, land, druif, kleur, soort) {
-  this.naam = naam;
-  this.appellatie = appellatie;
-  this.streek = streek;
-  this.land = land;
-  this.druif = druif;
-  this.kleur = kleur;
-  this.soort = soort;
-}
-
-function formField(id, label, value) {
-  this.id = id;
-  this.label = label;
-  this.value = value;
-}
-
 if (Meteor.isClient) {
   Meteor.startup = function() {
     Meteor.atuorun = function() {
@@ -50,7 +34,7 @@ if (Meteor.isClient) {
   };
 
   Template.wijnapp.selected_wijn = function () {
-    var wijn = Wijnen.findOne(Session.get("selected_wijn"));
+    var wijn = new Wijn(Wijnen.findOne(Session.get("selected_wijn")));
     return wijn;
   };
   
@@ -72,7 +56,7 @@ if (Meteor.isClient) {
   });
 
   Template.edit_wijn.selected_wijn = function () {
-    return Wijnen.findOne(Session.get("selected_wijn"));
+    return new Wijn(Wijnen.findOne(Session.get("selected_wijn")));
   };
   Template.edit_wijn.rendered = function () {
     return $('#land').typeahead({
