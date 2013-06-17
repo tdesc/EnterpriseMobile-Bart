@@ -12,6 +12,12 @@ function wijn(naam, appellatie, streek, land, druif, kleur, soort) {
   this.soort = soort;
 }
 
+function formField(id, label, value) {
+  this.id = id;
+  this.label = label;
+  this.value = value;
+}
+
 if (Meteor.isClient) {
   Meteor.startup = function() {
     Meteor.atuorun = function() {
@@ -28,7 +34,6 @@ if (Meteor.isClient) {
   
   Template.wijnapp.wijnen = function () {
     query = Session.get("search_query");
-    Session.set("search_query", query);
     if (!query) {
       return Wijnen.find({}, {sort: {naam: 1}});
     } else {
@@ -89,4 +94,22 @@ if (Meteor.isClient) {
       Session.set("selected_wijn", this._id);
     }
   });
+  
+  Template.edit_wijn.labels = {
+    "naam": {id: 'naam', label: 'Naam'},
+    "appellatie": {id: 'appellatie', label: 'Appellatie'},
+    "streek": {id: 'streek', label: 'Streek'},
+    "land": {id: 'land', label: 'Land'},
+    "druif": {id: 'druif', label: 'Druif'},
+    "kleur": {id: 'kleur', label: 'Kleur'},
+    "soort": {id: 'soort', label: 'Soort'}
+  }
+  
+  Template.edit_wijn.decorate = function(data, options) {
+    var contents = options.fn(this)
+    Template.formField.rendered = function() {
+      this.find('.controls').insertAdjacentHTML("AfterBegin",contents)
+    }
+    return Template.formField({id: data.id, label: data.label});
+  }
 }

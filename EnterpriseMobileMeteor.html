@@ -41,32 +41,83 @@
 
 <template name="edit_wijn">
   <div class="details">
-    <form id="edit_wijn_form">
-      <label for="naam">Naam:</label>
-      <input id="naam" type="text" value="{{selected_wijn.naam}}"/>
-      <label for="appellatie">Appellatie:</label>
-      <input id="appellatie" type="text" value="{{selected_wijn.appellatie}}"/>
-      <label for="streek">Streek:</label>
-      <input id="streek" type="text" value="{{selected_wijn.streek}}"/>
-      <label for="land">Land:</label>
-      <input id="land" type="text" value="{{selected_wijn.land}}"  autocomplete="off"/>
-      <label for="druif">Druif:</label>
-      <input id="druif" type="text" value="{{selected_wijn.druif}}"/>
-      <label for="kleur">Kleur:</label>
-      <select id="kleur" value="{{selected_wijn.kleur}}">
-        <option value="wit" {{selected selected_wijn.kleur "wit"}}>Wit</option>
-        <option value="rosé" {{selected selected_wijn.kleur "rosé"}}>Rosé</option>
-        <option value="rood" {{selected selected_wijn.kleur "rood"}}>Rood</option>
-      </select>
-      <label for="soort">Soort:</label>
-      <input id="soort" type="text" value="{{selected_wijn.soort}}"/>
-      <br />
-      <button type="button" class="save btn btn-primary">Opslaan</input>
-      <button type="button" class="cancel btn">Annuleren</input>
+    <form id="edit_wijn_form" class="form-horizontal">
+      <div class="control-group">
+        <label class="control-label" for="naam">Naam:</label>
+        <div class="controls">
+          <input id="naam" type="text" value="{{selected_wijn.naam}}"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="appellatie">Appellatie:</label>
+        <div class="controls">
+          <input id="appellatie" type="text" value="{{selected_wijn.appellatie}}"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="streek">Streek:</label>
+        <div class="controls">
+          <input id="streek" type="text" value="{{selected_wijn.streek}}"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="land">Land:</label>
+        <div class="controls">
+          <input id="land" type="text" value="{{selected_wijn.land}}"  autocomplete="off"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="druif">Druif:</label>
+        <div class="controls">
+          <input id="druif" type="text" value="{{selected_wijn.druif}}"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="kleur">Kleur:</label>
+        <div class="controls">
+          <select id="kleur" value="{{selected_wijn.kleur}}">
+            <option value="wit" {{selected selected_wijn.kleur "wit"}}>Wit</option>
+            <option value="rosé" {{selected selected_wijn.kleur "rosé"}}>Rosé</option>
+            <option value="rood" {{selected selected_wijn.kleur "rood"}}>Rood</option>
+          </select>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="soort">Soort:</label>
+        <div class="controls">
+          <input id="soort" type="text" value="{{selected_wijn.soort}}"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <button type="button" class="save btn btn-primary">Opslaan</button>
+          <button type="button" class="cancel btn">Annuleren</button>
+        </div>
+      </div>
     </form>
   </div>
 </template>
 
+<template name="formField">
+  <div class="control-group">
+    <label class="control-label" for="{{this.id}}">{{this.label}}:</label>
+    <div class="controls">
+      {{this.formField}}
+    </div>
+  </div>
+</template>
+
+
+
+<template name="preFormField">
+  <div class="control-group">
+    <label class="control-label" for="{{this.id}}">{{this.label}}:</label>
+    <div class="controls" id="controls">
+</template>
+<template name="postFormField">
+    </div>
+  </div>
+</template>
 
 
 <template name="wijn">
