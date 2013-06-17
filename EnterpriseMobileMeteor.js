@@ -103,21 +103,5 @@ if (Meteor.isClient) {
     }
   });
   
-  Template.edit_wijn.labels = {
-    "naam": {id: 'naam', label: 'Naam'},
-    "appellatie": {id: 'appellatie', label: 'Appellatie'},
-    "streek": {id: 'streek', label: 'Streek'},
-    "land": {id: 'land', label: 'Land'},
-    "druif": {id: 'druif', label: 'Druif'},
-    "kleur": {id: 'kleur', label: 'Kleur'},
-    "soort": {id: 'soort', label: 'Soort'}
-  }
-  
-  Template.edit_wijn.decorate = function(data, options) {
-    var contents = options.fn(this)
-    Template.formField.rendered = function() {
-      this.find('.controls').insertAdjacentHTML("AfterBegin",contents)
-    }
-    return Template.formField({id: data.id, label: data.label});
-  }
+
 }
