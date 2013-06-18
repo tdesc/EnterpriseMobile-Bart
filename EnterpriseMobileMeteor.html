@@ -108,22 +108,10 @@
 </template>
 
 
-
-<template name="preFormField">
-  <div class="control-group">
-    <label class="control-label" for="{{this.id}}">{{this.label}}:</label>
-    <div class="controls" id="controls">
-</template>
-<template name="postFormField">
-    </div>
-  </div>
-</template>
-
-
 <template name="wijn">
   <div class="wijn {{selected}} {{kleur}}">
     <span class="naam">{{naam}}</span>
-    <span class="land"><img src="img/{{landcode land}}.png"/></span>
+    <span class="land"><img src="img/b.gif" class="flag flag-{{landcode land}}" alt="{{land}}"/></span>
     <span class="druif">{{druif}}</span>
   </div>
 </template>

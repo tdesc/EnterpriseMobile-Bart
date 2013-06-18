@@ -1,0 +1,50 @@
+.flag {
+	width: 16px;
+	height: 11px;
+	background:url(img/flags.png) no-repeat
+}
+
+.flag.flag-ar {background-position: -16px 0}
+.flag.flag-as {background-position: -32px 0}
+.flag.flag-at {background-position: -48px 0}
+.flag.flag-au {background-position: -64px 0}
+.flag.flag-be {background-position: -80px 0}
+.flag.flag-bg {background-position: -96px 0}
+.flag.flag-bo {background-position: 0 -11px}
+.flag.flag-br {background-position: -16px -11px}
+.flag.flag-ca {background-position: -32px -11px}
+.flag.flag-ch {background-position: -48px -11px}
+.flag.flag-cl {background-position: -64px -11px}
+.flag.flag-cn {background-position: -80px -11px}
+.flag.flag-de {background-position: -96px -11px}
+.flag.flag-dk {background-position: 0 -22px}
+.flag.flag-dz {background-position: -16px -22px}
+.flag.flag-es {background-position: -32px -22px}
+.flag.flag-fr {background-position: -48px -22px}
+.flag.flag-ge {background-position: -64px -22px}
+.flag.flag-gr {background-position: -80px -22px}
+.flag.flag-hr {background-position: -96px -22px}
+.flag.flag-hu {background-position: 0 -33px}
+.flag.flag-id {background-position: -16px -33px}
+.flag.flag-ie {background-position: -32px -33px}
+.flag.flag-il {background-position: -48px -33px}
+.flag.flag-it {background-position: -64px -33px}
+.flag.flag-jp {background-position: -80px -33px}
+.flag.flag-lb {background-position: -96px -33px}
+.flag.flag-lu {background-position: 0 -44px}
+.flag.flag-md {background-position: -16px -44px}
+.flag.flag-mk {background-position: -32px -44px}
+.flag.flag-mx {background-position: -48px -44px}
+.flag.flag-nl {background-position: -64px -44px}
+.flag.flag-nz {background-position: -80px -44px}
+.flag.flag-pt {background-position: -96px -44px}
+.flag.flag-ro {background-position: 0 -55px}
+.flag.flag-si {background-position: -16px -55px}
+.flag.flag-sk {background-position: -32px -55px}
+.flag.flag-th {background-position: -48px -55px}
+.flag.flag-tn {background-position: -64px -55px}
+.flag.flag-tr {background-position: -80px -55px}
+.flag.flag-ua {background-position: -96px -55px}
+.flag.flag-uy {background-position: 0 -66px}
+.flag.flag-vi {background-position: -16px -66px}
+.flag.flag-za {background-position: -32px -66px}

@@ -21,7 +21,6 @@ if (Meteor.isClient) {
     if (!query) {
       return Wijnen.find({}, {sort: {naam: 1}});
     } else {
-      //return Wijnen.find({naam: {$regex: query}}, {sort: {naam: 1}});
       return Wijnen.find({ $or: [
          {naam: {$regex: query}},
          {appellatie: {$regex: query}}, 
@@ -75,7 +74,7 @@ if (Meteor.isClient) {
   Template.wijn.landcode = function(landNaam) {
     land = Landen.findOne({naam: landNaam});
     if (land) {
-      return land.code
+      return land.code.toLowerCase();
     } else {
       return ""
     }
