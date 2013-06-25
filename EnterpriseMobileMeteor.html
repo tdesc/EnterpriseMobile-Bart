@@ -1,4 +1,5 @@
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maikel's wijnkelder</title>
 </head>
 
@@ -7,36 +8,67 @@
 </body>
 
 <template name="wijnapp">
-  <h1>Maikel's wijnkelder</h1>
-  
-  <div class="search">
-    <form id="search_form" class="form-search">
-      <div class="input-append">
-        <input type="text" class="span2 search-query" value="{{search_query}}"/>
-        <button type="button" class="btn search">Zoeken</button>
-      </div>
-    </form>
-  </div>
-  
-  {{#if wijnen}}
-    <div class="wijnen">
-      {{#each wijnen}}
-        {{> wijn}}
-      {{/each}}
+  <div id="main" data-role="page">
+    <div class="page-header">
+      <h1>Maikel’s wijnkelder</h1>
     </div>
+  
+    <div class="search">
+      <form id="search_form" class="form-search">
+        <div class="input-append">
+          <input type="text" class="span2 search-query" value="{{search_query}}" placeholder="Zoekterm" />
+          <button type="button" class="btn search">Zoeken</button>
+        </div>
+      </form>
+    </div>
+  
+    {{#if wijnen}}
+      <div class="wijnen" >
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Naam</th>
+              <th>Land</th>
+              <th class="hidden-phone">Appellatie</th>
+              <th class="hidden-phone hidden-tablet">Streek</th>
+              <th class="hidden-phone">Druif</th>
+              <th class="hidden-phone hidden-tablet">Soort</th>            
+            </tr>
+          </thead>
+          <tbody>
+            {{#each wijnen}}
+              {{> wijn}}
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
   {{/if}}
   
   {{#unless wijnen}}
     <div class="none">Geen wijnen gevonden</div>
   {{/unless}}
+  </div>
   
-  {{#if selected_wijn}}
-    {{> edit_wijn}}
-  {{/if}}
+  <div id="details" data-role="page">
+    {{#if selected_wijn}}
+      {{> edit_wijn}}
+    {{/if}}
 
-  {{#unless selected_wijn}}
-    <div class="none">Klik op een wijn om te selecteren</div>
-  {{/unless}}  
+    {{#unless selected_wijn}}
+      <div class="none">Klik op een wijn om te selecteren</div>
+    {{/unless}}  
+  </div>
+</template>
+
+<template name="wijn">
+  <tr class="wijn {{selected}} {{kleur}}">
+    <td>{{naam}}</td>
+    <td><img src="img/b.gif" class="flag flag-{{landcode land}}" alt="{{land}}"/></td>
+    <td class="hidden-phone">{{appellatie}}</td>
+    <td class="hidden-phone hidden-tablet">{{streek}}</td>
+    <td class="hidden-phone">{{druif}}</td>
+    <td class="hidden-phone hidden-tablet">{{soort}}</td>
+  </tr>
 </template>
 
 <template name="edit_wijn">
@@ -108,10 +140,3 @@
 </template>
 
 
-<template name="wijn">
-  <div class="wijn {{selected}} {{kleur}}">
-    <span class="naam">{{naam}}</span>
-    <span class="land"><img src="img/b.gif" class="flag flag-{{landcode land}}" alt="{{land}}"/></span>
-    <span class="druif">{{druif}}</span>
-  </div>
-</template>

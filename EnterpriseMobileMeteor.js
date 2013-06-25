@@ -6,18 +6,21 @@ if (Meteor.isClient) {
   Meteor.startup = function() {
     Meteor.atuorun = function() {
       landen = _(Landen.find().fetch()).pluck("naam");
-      console.log(landen);
     }
   };
   
   Template.wijnapp.events({
+    'keyup input.search-query' : function(event) {
+      //Session.set("search_query", $(".search-query").val());
+      // TODO: search on type werkend krijgen
+    },
     'click button.search': function() {
       Session.set("search_query", $(".search-query").val());
     }
   })
   
   Template.wijnapp.wijnen = function () {
-    query = Session.get("search_query");
+    query = Template.wijnapp.search_query();
     if (!query) {
       return Wijnen.find({}, {sort: {naam: 1}});
     } else {
@@ -31,6 +34,10 @@ if (Meteor.isClient) {
         ]}, {sort: {naam: 1}});
     }
   };
+  
+  Template.wijnapp.search_query = function() {
+    return Session.get("search_query");
+  }
 
   Template.wijnapp.selected_wijn = function () {
     var wijn = new Wijn(Wijnen.findOne(Session.get("selected_wijn")));
