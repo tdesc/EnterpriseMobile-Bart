@@ -10,9 +10,8 @@ if (Meteor.isClient) {
   };
   
   Template.wijnapp.events({
-    'keyup input.search-query' : function(event) {
-      //Session.set("search_query", $(".search-query").val());
-      // TODO: search on type werkend krijgen
+    'blur input.search-query' : function(event) {
+      Session.set("search_query", $(".search-query").val());
     },
     'click button.search': function() {
       Session.set("search_query", $(".search-query").val());
@@ -40,8 +39,7 @@ if (Meteor.isClient) {
   }
 
   Template.wijnapp.selected_wijn = function () {
-    var wijn = new Wijn(Wijnen.findOne(Session.get("selected_wijn")));
-    return wijn;
+    return Wijnen.findOne(Session.get("selected_wijn"));
   };
   
   Template.edit_wijn.events({
