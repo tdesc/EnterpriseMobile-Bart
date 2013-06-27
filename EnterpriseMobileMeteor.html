@@ -25,12 +25,10 @@
  
             <!-- Everything you want hidden at 940px or less, place within here -->
             <div class="nav-collapse collapse">
-              <div class="pull-right">
-                <form class="navbar-search pull-left" id="search_form">
-                    <input type="text" class="span2 search-query" value="{{search_query}}" placeholder="Zoekterm" />
-                </form>
-                {{loginButtons align="right"}}
-              </div>
+              {{ loginButtons }}
+              <form class="navbar-search pull-right" id="search_form">
+                <input type="text" class="span2 search-query" value="{{search_query}}" placeholder="Zoekterm" />
+              </form>
             </div>
           </div>
         </div>
