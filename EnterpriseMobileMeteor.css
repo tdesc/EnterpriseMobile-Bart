@@ -10,9 +10,12 @@ body {
     user-select: none;
 }
 
-.navbar-search .btn {
+.navbar-search i {
     color: #bbbbbb;
     font-size: 18px;
+    position: relative;
+    top: 3px;
+    left: -28px;
 }
 
 #outer {

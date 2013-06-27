@@ -16,7 +16,7 @@ if (Meteor.isClient) {
     'click button.search': function() {
       Session.set("search_query", $("#search-query").val());
     },
-    'click button#search-clear': function() {
+    'click i.icon-remove-sign': function() {
       Session.set("search_query", "");
     }
   })
