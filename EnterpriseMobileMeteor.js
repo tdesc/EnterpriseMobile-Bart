@@ -10,11 +10,14 @@ if (Meteor.isClient) {
   };
   
   Template.wijnapp.events({
-    'blur input.search-query' : function(event) {
-      Session.set("search_query", $(".search-query").val());
+    'blur input#search-query' : function(event) {
+      Session.set("search_query", $("#search-query").val());
     },
     'click button.search': function() {
-      Session.set("search_query", $(".search-query").val());
+      Session.set("search_query", $("#search-query").val());
+    },
+    'click button#search-clear': function() {
+      Session.set("search_query", "");
     }
   })
   
