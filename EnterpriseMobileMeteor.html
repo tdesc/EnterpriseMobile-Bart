@@ -27,6 +27,7 @@
             <div class="nav-collapse collapse">
               {{ loginButtons }}
               <form class="navbar-search pull-right" id="search_form">
+                  <i class="icon-search"></i>
                   <input id="search-query" type="text" class="span2 search-query" value="{{search_query}}" placeholder="Zoekterm" />
                   <i class="icon-remove-sign"></i>
               </form>
@@ -42,6 +43,7 @@
           <thead>
             <tr>
               <th>Naam</th>
+              <th>&nbsp;</th>
               <th>Land</th>
               <th class="hidden-phone">Appellatie</th>
               <th class="hidden-phone hidden-tablet">Streek</th>
@@ -68,21 +70,39 @@
       {{> edit_wijn}}
     {{/if}}
 
-    {{#unless selected_wijn}}
+    {{#if viewed_wijn}}
+      {{> wijn_details}}
+    {{/if}}
+
+    {{#if show_placeholder}}
       <div class="none">Klik op een wijn om te selecteren</div>
-    {{/unless}}  
+    {{/if}}  
   </div>
 </template>
 
 <template name="wijn">
   <tr class="wijn {{selected}} {{kleur}}">
     <td>{{naam}}</td>
+    <td>
+      {{#if currentUser}}
+      <i class="icon-edit"> </i>
+      {{/if}}
+      {{#unless currentUser}}
+        &nbsp;
+      {{/unless}}
+    </td>
     <td><img src="img/b.gif" class="flag flag-{{landcode land}}" alt="{{land}}"/></td>
     <td class="hidden-phone">{{appellatie}}</td>
     <td class="hidden-phone hidden-tablet">{{streek}}</td>
     <td class="hidden-phone">{{druif}}</td>
     <td class="hidden-phone hidden-tablet">{{soort}}</td>
   </tr>
+</template>
+
+<template name="wijn_details">
+  <div class="edtails">
+    <h2>{{viewed_wijn.naam}}</h2>
+  </div>
 </template>
 
 <template name="edit_wijn">

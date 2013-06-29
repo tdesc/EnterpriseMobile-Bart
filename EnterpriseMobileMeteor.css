@@ -10,12 +10,24 @@ body {
     user-select: none;
 }
 
-.navbar-search i {
+.navbar-search i.icon-remove-sign {
     color: #bbbbbb;
     font-size: 18px;
     position: relative;
     top: 3px;
     left: -28px;
+}
+
+.navbar-search i.icon-search {
+    color: rgb(119,119,119);
+    font-size: 18px;
+    position: relative;
+    top: 3px;
+    left: 28px;
+}
+
+.navbar-search .search-query  {
+    padding-left: 29px;
 }
 
 #outer {

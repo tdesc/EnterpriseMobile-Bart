@@ -1,4 +1,11 @@
 Wijnen = new Meteor.Collection("wijnen");
+
+Wijnen.deny({
+  update: function (userId, docs, fields, modifier) {
+    return !userId
+  }
+});
+
 Landen = new Meteor.Collection("landen");
 landen = {};
 
@@ -42,7 +49,15 @@ if (Meteor.isClient) {
   }
 
   Template.wijnapp.selected_wijn = function () {
-    return Wijnen.findOne(Session.get("selected_wijn"));
+    return Session.get("selected_wijn");
+  };
+  
+  Template.wijnapp.viewed_wijn = function () {
+    return Session.get("viewed_wijn");
+  };  
+  
+  Template.wijnapp.show_placeholder = function() {
+    return (Session.get("selected_wijn") + Session.get("viewed_wijn")).length <= 0;
   };
   
   Template.edit_wijn.events({
@@ -76,7 +91,7 @@ if (Meteor.isClient) {
   };
   
   Template.wijn.selected = function () {
-    return Session.equals("selected_wijn", this._id) ? "selected" : '';
+    return Session.equals("selected_wijn", this._id) || Session.equals("viewed_wijn", this._id) ? "selected" : '';
   };
   
   Template.wijn.landcode = function(landNaam) {
@@ -89,10 +104,20 @@ if (Meteor.isClient) {
   }
 
   Template.wijn.events({
-    'click': function () {
+    'click i.icon-edit': function () {
       Session.set("selected_wijn", this._id);
+      Session.set("viewed_wijn", '');
+      stopPropagation();
+    },
+    'click': function() {
+      Session.set("viewed_wijn", this._id);
+      Session.set("selected_wijn", '');      
     }
   });
+  
+  Template.wijn_details.viewed_wijn = function() {
+    return new Wijn(Wijnen.findOne(Session.get("viewed_wijn")));  
+  }
   
 
 }
