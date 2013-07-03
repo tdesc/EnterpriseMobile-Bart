@@ -1,8 +1,9 @@
 Wijnen = new Meteor.Collection("wijnen");
 
-Wijnen.deny({
+Wijnen.allow({
   update: function (userId, docs, fields, modifier) {
-    return !userId
+    console.log(userId)
+    return userId
   }
 });
 
