@@ -1,0 +1,42 @@
+
+<template name="wijnenTable">
+  <div class="wijnen" >
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Naam</th>
+          <th>&nbsp;</th>
+          <th>Land</th>
+          <th class="hidden-phone">Appellatie</th>
+          <th class="hidden-phone hidden-tablet">Streek</th>
+          <th class="hidden-phone">Druif</th>
+          <th class="hidden-phone hidden-tablet">Soort</th>            
+        </tr>
+      </thead>
+      <tbody>
+        {{#each wijnen}}
+          {{> wijn}}
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>
+
+<template name="wijn">
+  <tr class="wijn {{selected}} {{kleur}}">
+    <td>{{naam}}</td>
+    <td>
+      {{#if currentUser}}
+      <i class="icon-edit"> </i>
+      {{/if}}
+      {{#unless currentUser}}
+        &nbsp;
+      {{/unless}}
+    </td>
+    <td><img src="img/b.gif" class="flag flag-{{landcode land}}" alt="{{land}}"/></td>
+    <td class="hidden-phone">{{appellatie}}</td>
+    <td class="hidden-phone hidden-tablet">{{streek}}</td>
+    <td class="hidden-phone">{{druif}}</td>
+    <td class="hidden-phone hidden-tablet">{{soort}}</td>
+  </tr>
+</template>
