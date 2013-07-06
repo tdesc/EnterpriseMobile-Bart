@@ -1,17 +1,23 @@
 <template name="wijn_details">
   <div class="edtails">
-    <h2>{{viewed_wijn.naam}}</h2>
+    <h2>{{selected_wijn.naam}}
+      {{#if currentUser}}
+      &nbsp;<i class="icon-edit"> </i>
+      {{/if}}
+    </h2>
     <dl class="dl-horizontal">
+      <dt>Kleur</dt>
+      <dd>{{selected_wijn.kleur}}</dd>
       <dt>Appellatie</dt>
-      <dd>{{viewed_wijn.appellatie}}</dd>
+      <dd>{{selected_wijn.appellatie}}</dd>
       <dt>Land</dt>
-      <dd>{{viewed_wijn.land}}</dd>
+      <dd>{{selected_wijn.land}}</dd>
       <dt>Streek</dt>
-      <dd>{{viewed_wijn.streek}}</dd>
+      <dd>{{selected_wijn.streek}}</dd>
       <dt>Druif</dt>
-      <dd>{{viewed_wijn.druif}}</dd>
+      <dd>{{selected_wijn.druif}}</dd>
       <dt>Soort</dt>
-      <dd>{{viewed_wijn.soort}}</dd>
+      <dd>{{selected_wijn.soort}}</dd>
     </dl>
   </div>
 </template>
