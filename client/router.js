@@ -1,4 +1,6 @@
 Meteor.Router.add({
+  '/': 'wijnen',
+  
   '/wijnen': 'wijnen',
   
   '/wijn': 'wijn_details',

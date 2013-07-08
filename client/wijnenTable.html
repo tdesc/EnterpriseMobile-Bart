@@ -4,7 +4,6 @@
       <thead>
         <tr>
           <th>Naam</th>
-          <th>&nbsp;</th>
           <th>Land</th>
           <th class="hidden-phone">Appellatie</th>
           <th class="hidden-phone hidden-tablet">Streek</th>
@@ -24,14 +23,6 @@
 <template name="wijn">
   <tr class="wijn {{selected}} {{kleur}}">
     <td>{{naam}}</td>
-    <td>
-      {{#if currentUser}}
-      <i class="icon-edit"> </i>
-      {{/if}}
-      {{#unless currentUser}}
-        &nbsp;
-      {{/unless}}
-    </td>
     <td><img src="img/b.gif" class="flag flag-{{landcode land}}" alt="{{land}}"/></td>
     <td class="hidden-phone">{{appellatie}}</td>
     <td class="hidden-phone hidden-tablet">{{streek}}</td>

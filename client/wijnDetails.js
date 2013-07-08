@@ -1,6 +1,9 @@
 Template.wijn_details.events({
   'click i.icon-edit': function () {
     Meteor.Router.to('/bewerkWijn');
+  },
+  'click button' : function() {
+    Meteor.Router.to('/wijnen');
   }
 });
 

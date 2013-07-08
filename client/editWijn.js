@@ -11,7 +11,10 @@ Template.edit_wijn.events({
     } } );
   },
   'click button.cancel' : function() {
-    Session.set("selected_wijn", '');
+    // do nothing
+  },
+  'click button' : function() {
+    Meteor.Router.to('/wijn');
   }
 });
 
