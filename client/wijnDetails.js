@@ -10,3 +10,7 @@ Template.wijn_details.events({
 Template.wijn_details.selected_wijn = function() {
   return new Wijn(Wijnen.findOne(Session.get("selected_wijn")));  
 }
+
+Template.wijn_details.notities = function() {
+  return Smaaknotities.find({wijn_id: Session.get("selected_wijn")});
+}

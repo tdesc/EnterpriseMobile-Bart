@@ -7,5 +7,7 @@ Wijnen.allow({
   }
 });
 
+Smaaknotities = new Meteor.Collection("smaaknotities");
+
 Landen = new Meteor.Collection("landen");
 landen = {};

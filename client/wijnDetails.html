@@ -1,5 +1,4 @@
 <template name="wijn_details">
-  <div class="edtails">
     <h2>{{selected_wijn.naam}}
       {{#if currentUser}}
       &nbsp;<i class="icon-edit"> </i>
@@ -21,5 +20,18 @@
       <dt>&nbsp;</dt>
       <dd><button type="button" class="cancel btn">Terug</button></dd>
     </dl>
-  </div>
+    <table>
+      <tbody>
+        {{#each notities}}
+          <tr>
+            <td>{{jaartal}}</td>
+            <td>{{datum}}</td>
+            <td>{{kleur}}</td>
+            <td>{{geur}}</td>
+            <td>{{smaak}}</td>
+            <td>{{cijfer}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
 </template>

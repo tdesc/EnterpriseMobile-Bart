@@ -1,12 +1,16 @@
 Meteor.startup(function () {
   if (Wijnen.find().count() === 0) {
+    console.log("Wijnen toevoegen...")
     var wijnen = [
-      new wijn("Naam1", "Appelatie1", "Streek1", "Land1", "Druif1", "rood", "Soort1"),
-      new wijn("Naam2", "Appelatie2", "Streek2", "Land2", "Druif2", "rood", "Soort2"),
-      new wijn("Naam3", "Appelatie3", "Streek3", "Land3", "Druif3", "wit", "Soort3"),
-      new wijn("Naam4", "Appelatie4", "Streek4", "Land4", "Druif4", "wit", "Soort4"),
-      new wijn("Naam5", "Appelatie5", "Streek5", "Land5", "Druif5", "rosé", "Soort5")];
+      new wijn({naam:"Bodegas Dolor de Cabeza", appellatie:"Rueda D.O.", streek:"Rueda", land:"Spanje", druif:"Verdejo", kleur:"wit", soort:"Olé"}),
+      new wijn({naam:"Château Migraine", appellatie:"Appellation Gueule de Bois Controlée", streek:"Gueule de Bois", land:"Frankrijk", druif:"Chardonnay", kleur:"wit", soort:"Hoofdpijnwijn"}),
+      new wijn({naam:"De Hoofdpijnhoeve", appellatie:"Achterhoekse Oorsprong", streek:"Gelderland", land:"Nederland", druif:"Merlot", kleur:"wit", soort:"Soort"}),
+      new wijn({naam:"Finca Migraña", appellatie:"San Rafael", streek:"Mendoza", land:"Argentinië", druif:"Bonarda", kleur:"rood", soort:"Lekker"}),
+      new wijn({naam:"Kaap die Houten Kop", appellatie:"Olifantshoek", streek:"Noordkaap", land:"Zuid-Afrika", druif:"Shiraz", kleur:"rood", soort:"Zwaar"}),
+      new wijn({naam:"Maux de Tête Villages", appellatie:"Appellation Henrique Strabique", streek:"Loucher", land:"Frankrijk", druif:"Merlot", kleur:"rood", soort:"De kater komt later"}),
+      new wijn({naam:"Hangover's Bin", appellatie:"Headache Hills", streek:"Headache Hills", land:"Australië", druif:"Pinot Noir", kleur:"rood", soort:"Heavy stuff"})];
     for (var i = 0; i < wijnen.length; i++)
+      console.log("   Toevoegen wijn " + i + " van " + wijnen.length);
       Wijnen.insert({naam: wijnen[i].naam,
                      appellatie: wijnen[i].appellatie,
                      streek: wijnen[i].streek,
@@ -14,6 +18,31 @@ Meteor.startup(function () {
                      druif: wijnen[i].druif,
                      kleur: wijnen[i].kleur,
                      soort: wijnen[i].soort});
+  }
+  
+  if (Smaaknotities.find().count() === 0) {
+    console.log("Smaaknotities toevoegen...")
+    var aUserId = Meteor.users.findOne()._id;
+    
+    var smaaknotities = [
+      new Smaaknotitie({jaartal: 2010, datum: new Date(), kleur:"donkerrood", geur:"WC-eend",smaak:"Pindakaas",cijfer:8}),
+      new Smaaknotitie({jaartal: 2011, datum: new Date(), kleur:"lichtrood", geur:"WC-eend",smaak:"Lekker",cijfer:7}),
+      new Smaaknotitie({jaartal: 2012, datum: new Date(), kleur:"geel", geur:"WC-eend",smaak:"Niet te hachelen",cijfer:6}),
+      new Smaaknotitie({jaartal: 2013, datum: new Date(), kleur:"groen", geur:"WC-eend",smaak:"Koffie",cijfer:5})
+    ]
+    console.log("    max aantal smaaknotities per wijn: " + smaaknotities.length)
+    
+    console.log("    aantal wijnen: " + Wijnen.find().count())
+    Wijnen.find().forEach(function(wijn){
+      var aantal = Math.round(Math.random() * smaaknotities.length);
+      console.log("    " + aantal + " smaaknotities voor wijn " + wijn.naam)
+      for (var n = 0; n < aantal; n++) {
+        console.log("        Smaaknotitie " + n + " van " + aantal)
+        smaaknotities[n].user_id = aUserId;
+        smaaknotities[n].wijn_id = wijn._id;
+        Smaaknotities.insert(smaaknotities[n]);
+      }
+    });
   }
   
   if (Landen.find().count() === 0) {
