@@ -12,7 +12,11 @@ Smaaknotitie = function (object) {
 }
 
 Smaaknotitie.prototype.datumLeesbaar = function() {
-  return this.datum.toLocaleDateString();
+  if (this.datum) {
+    return this.datum.toLocaleDateString();
+  } else {
+    return ""
+  }
 }
 
 Smaaknotitie.prototype.init = function(wijnId) {
