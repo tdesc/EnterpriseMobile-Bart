@@ -1,23 +1,22 @@
 Meteor.startup(function () {
   if (Wijnen.find().count() === 0) {
+    console.log("Oude smaaknotities weggooien")
+    Smaaknotities.remove({})
     console.log("Wijnen toevoegen...")
     var wijnen = [
-      new wijn({naam:"Bodegas Dolor de Cabeza", appellatie:"Rueda D.O.", streek:"Rueda", land:"Spanje", druif:"Verdejo", kleur:"wit", soort:"Olé"}),
-      new wijn({naam:"Château Migraine", appellatie:"Appellation Gueule de Bois Controlée", streek:"Gueule de Bois", land:"Frankrijk", druif:"Chardonnay", kleur:"wit", soort:"Hoofdpijnwijn"}),
-      new wijn({naam:"De Hoofdpijnhoeve", appellatie:"Achterhoekse Oorsprong", streek:"Gelderland", land:"Nederland", druif:"Merlot", kleur:"wit", soort:"Soort"}),
-      new wijn({naam:"Finca Migraña", appellatie:"San Rafael", streek:"Mendoza", land:"Argentinië", druif:"Bonarda", kleur:"rood", soort:"Lekker"}),
-      new wijn({naam:"Kaap die Houten Kop", appellatie:"Olifantshoek", streek:"Noordkaap", land:"Zuid-Afrika", druif:"Shiraz", kleur:"rood", soort:"Zwaar"}),
-      new wijn({naam:"Maux de Tête Villages", appellatie:"Appellation Henrique Strabique", streek:"Loucher", land:"Frankrijk", druif:"Merlot", kleur:"rood", soort:"De kater komt later"}),
-      new wijn({naam:"Hangover's Bin", appellatie:"Headache Hills", streek:"Headache Hills", land:"Australië", druif:"Pinot Noir", kleur:"rood", soort:"Heavy stuff"})];
-    for (var i = 0; i < wijnen.length; i++)
+      new Wijn({naam:"Bodegas Dolor de Cabeza", appellatie:"Rueda D.O.", streek:"Rueda", land:"Spanje", druif:"Verdejo", kleur:"wit", soort:"Olé"}),
+      new Wijn({naam:"Château Migraine", appellatie:"Appellation Gueule de Bois Controlée", streek:"Gueule de Bois", land:"Frankrijk", druif:"Chardonnay", kleur:"wit", soort:"Hoofdpijnwijn"}),
+      new Wijn({naam:"De Hoofdpijnhoeve", appellatie:"Achterhoekse Oorsprong", streek:"Gelderland", land:"Nederland", druif:"Merlot", kleur:"rosé", soort:"Soort"}),
+      new Wijn({naam:"Finca Migraña", appellatie:"San Rafael", streek:"Mendoza", land:"Argentinië", druif:"Bonarda", kleur:"rood", soort:"Lekker"}),
+      new Wijn({naam:"Kaap die Houten Kop", appellatie:"Olifantshoek", streek:"Noordkaap", land:"Zuid-Afrika", druif:"Shiraz", kleur:"rood", soort:"Zwaar"}),
+      new Wijn({naam:"Maux de Tête Villages", appellatie:"Appellation Henrique Strabique", streek:"Loucher", land:"Frankrijk", druif:"Merlot", kleur:"rood", soort:"De kater komt later"}),
+      new Wijn({naam:"Hangover's Bin", appellatie:"Headache Hills", streek:"Headache Hills", land:"Australië", druif:"Pinot Noir", kleur:"rood", soort:"Heavy stuff"})];
+    for (var i = 0; i < wijnen.length; i++) {
       console.log("   Toevoegen wijn " + i + " van " + wijnen.length);
-      Wijnen.insert({naam: wijnen[i].naam,
-                     appellatie: wijnen[i].appellatie,
-                     streek: wijnen[i].streek,
-                     land: wijnen[i].land,
-                     druif: wijnen[i].druif,
-                     kleur: wijnen[i].kleur,
-                     soort: wijnen[i].soort});
+      console.log(wijnen[i])
+      var result = Wijnen.insert(wijnen[i]);
+      console.log(result);
+    }
   }
   
   if (Smaaknotities.find().count() === 0) {

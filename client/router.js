@@ -5,5 +5,7 @@ Meteor.Router.add({
   
   '/wijn': 'wijn_details',
   
-  '/bewerkWijn': 'edit_wijn'
+  '/bewerkWijn': 'edit_wijn',
+  
+  '/bewerkNotitie': 'edit_smaaknotitie'
 });

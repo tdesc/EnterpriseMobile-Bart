@@ -1,0 +1,47 @@
+<template name="edit_smaaknotitie">
+    <h2>Smaaknotitie voor {{wijn.naam}}</h2>    
+    <form id="edit_wijn_form" class="form-horizontal">
+      <div class="control-group">
+        <label class="control-label" for="jaartal">Jaartal:</label>
+        <div class="controls">
+          <input id="jaartal" type="text" value="{{notitie.jaartal}}"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="datum">Datum:</label>
+        <div class="controls">
+          <span class="input-xlarge uneditable-input">{{notitie.datum}}</span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="kleur">Kleur:</label>
+        <div class="controls">
+          <input id="kleur" type="text" value="{{notitie.kleur}}"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="geur">Geur:</label>
+        <div class="controls">
+          <input id="geur" type="text" value="{{notitie.geur}}" />
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="smaak">Smaak:</label>
+        <div class="controls">
+          <input id="smaak" type="text" value="{{notitie.smaak}}"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="cijfer">Cijfer:</label>
+        <div class="controls">
+         <input id="cijfer" type="text" value="{{notitie.cijfer}}"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <button type="button" class="save btn btn-primary">Opslaan</button>
+          <button type="button" class="cancel btn">Annuleren</button>
+        </div>
+      </div>
+    </form>
+</template>

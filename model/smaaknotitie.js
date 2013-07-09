@@ -15,9 +15,14 @@ Smaaknotitie.prototype.datumLeesbaar = function() {
   return this.datum.toLocaleDateString();
 }
 
+Smaaknotitie.prototype.init = function(wijnId) {
+  this.datum = new Date();
+  this.user = Meteor.userId();
+  this.wijn_id = wijnId;
+}
 
 Smaaknotitie.prototype.toString = function() {
-    return "Smaaknotitie {wijn_id: "+this.wijn_id + ", user_id: " + this.user_id + ", jaartal: "+ this.jaartal + "}";
+  return "Smaaknotitie {wijn_id: "+this.wijn_id + ", user_id: " + this.user_id + ", jaartal: "+ this.jaartal + "}";
 }
 
 
