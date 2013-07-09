@@ -12,5 +12,5 @@ Template.wijn_details.selected_wijn = function() {
 }
 
 Template.wijn_details.notities = function() {
-  return Smaaknotities.find({wijn_id: Session.get("selected_wijn")});
+  return Smaaknotities.find({wijn_id: Session.get("selected_wijn")}).map(function(n){return new Smaaknotitie(n)});
 }

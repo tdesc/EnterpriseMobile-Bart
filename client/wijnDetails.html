@@ -20,16 +20,25 @@
       <dt>&nbsp;</dt>
       <dd><button type="button" class="cancel btn">Terug</button></dd>
     </dl>
-    <table>
+    <h3>Smaaknotities</h3>
+    <table class="table">
+      <thead>
+        <th>Jaartal</th>
+        <th>Datum</th>
+        <th>Kleur</th>
+        <th>Geur</th>
+        <th>Smaak</th>
+        <th>Cijfer</th>          
+      </thead>
       <tbody>
         {{#each notities}}
           <tr>
             <td>{{jaartal}}</td>
-            <td>{{datum}}</td>
+            <td>{{datumLeesbaar}}</td>
             <td>{{kleur}}</td>
             <td>{{geur}}</td>
             <td>{{smaak}}</td>
-            <td>{{cijfer}}</td>
+            <td><span class="badge">{{cijfer}}</span></td>
           </tr>
         {{/each}}
       </tbody>

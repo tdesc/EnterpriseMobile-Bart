@@ -11,6 +11,9 @@ Smaaknotitie = function (object) {
   }
 }
 
+Smaaknotitie.prototype.datumLeesbaar = function() {
+  return this.datum.toLocaleDateString();
+}
 
 
 Smaaknotitie.prototype.toString = function() {
