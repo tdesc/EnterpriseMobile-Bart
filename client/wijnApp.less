@@ -1,0 +1,71 @@
+.user-select-none() {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+@witte-wijn: #FFEDC6;
+@rode-wijn: #BF8F89;
+@rose-wijn: #FFD0CA;
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 200;
+    margin: 50px 0;
+    padding: 0;
+    .user-select-none();
+}
+
+.navbar-search i.icon-remove-sign {
+    color: #bbbbbb;
+    font-size: 18px;
+    position: relative;
+    top: 3px;
+    left: -28px;
+}
+
+.navbar-search i.icon-search {
+    color: rgb(119,119,119);
+    font-size: 18px;
+    position: relative;
+    top: 3px;
+    left: 28px;
+}
+
+.navbar-search .search-query  {
+    padding-left: 29px;
+}
+
+#outer {
+    width: 600px;
+    margin: 0 auto;    
+}
+
+
+.wijn {
+    cursor: pointer;
+    padding: 5px;
+}
+
+
+.wijn.wit {
+    background-color: @witte-wijn;
+}
+
+.wijn.rood {
+    background-color: @rode-wijn;
+}
+
+.wijn.rosé {
+    background-color: @rose-wijn;
+}
+
+.wijn.selected {
+    font-weight: bold;
+}
+
+.wijn.selected .streek {
+    color: black;
+}
