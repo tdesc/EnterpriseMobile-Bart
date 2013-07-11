@@ -13,7 +13,7 @@ Smaaknotitie = function (object) {
 
 Smaaknotitie.prototype.datumLeesbaar = function() {
   if (this.datum) {
-    return this.datum.toLocaleDateString();
+    return moment(this.datum).calendar();
   } else {
     return ""
   }
