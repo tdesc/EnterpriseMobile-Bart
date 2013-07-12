@@ -3,21 +3,16 @@
   "dependencies": {
     "basePackages": {
       "font-awesome": {},
-      "accounts-ui-bootstrap-dropdown": {},
       "router": {},
       "transitioner": {},
-      "momentjs": {}
+      "momentjs": {},
+      "accounts-ui-bootstrap-dropdown": {}
     },
     "packages": {
       "font-awesome": {
         "git": "https://github.com/nate-strauser/meteor-font-awesome.git",
         "tag": "v3.2.0",
         "commit": "2cba6f907a2579cae2d399b522f9544c13d5e091"
-      },
-      "accounts-ui-bootstrap-dropdown": {
-        "git": "https://github.com/erobit/meteor-accounts-ui-bootstrap-dropdown.git",
-        "tag": "v0.1.5",
-        "commit": "e12b128f140caa2797720cbd5fae084de7810c6a"
       },
       "router": {
         "git": "https://github.com/tmeasday/meteor-router.git",
@@ -33,6 +28,11 @@
         "git": "https://github.com/crapthings/meteor-momentjs.git",
         "tag": "v2.0.0.1",
         "commit": "2200ae0f0472164b7cc33dfd9b3ba729a7deb805"
+      },
+      "accounts-ui-bootstrap-dropdown": {
+        "git": "https://github.com/erobit/meteor-accounts-ui-bootstrap-dropdown.git",
+        "tag": "v0.1.5",
+        "commit": "e12b128f140caa2797720cbd5fae084de7810c6a"
       },
       "page-js-ie-support": {
         "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",

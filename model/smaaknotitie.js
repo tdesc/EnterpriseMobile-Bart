@@ -19,9 +19,17 @@ Smaaknotitie.prototype.datumLeesbaar = function() {
   }
 }
 
+Smaaknotitie.prototype.proever = function() {
+  if (Meteor.users.findOne({_id: this.user_id})) {
+    return Meteor.users.findOne({_id: this.user_id}).username
+  } else {
+    return "";
+  }
+}
+
 Smaaknotitie.prototype.init = function(wijnId) {
   this.datum = new Date();
-  this.user = Meteor.userId();
+  this.user_id = Meteor.userId();
   this.wijn_id = wijnId;
 }
 

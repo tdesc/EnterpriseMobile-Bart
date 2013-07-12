@@ -12,4 +12,10 @@ Smaaknotities = new Meteor.Collection("smaaknotities");
 Landen = new Meteor.Collection("landen");
 landen = {};
 
-moment.lang('nl');
+if (Meteor.isClient) {
+  Accounts.ui.config({
+    passwordSignupFields: 'USERNAME_AND_EMAIL'
+  });
+  
+  moment.lang('nl');
+}
