@@ -11,6 +11,9 @@ Smaaknotities = new Meteor.Collection("smaaknotities");
 Smaaknotities.allow({
   update: function (userId, doc) {
     return userId && doc.user_id === userId;
+  },
+  insert: function(userId, doc) {
+    return userId
   }
 })
 
