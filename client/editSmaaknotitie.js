@@ -6,7 +6,18 @@ Template.edit_smaaknotitie.events({
     notitie.geur = $('#geur').val();
     notitie.smaak = $('#smaak').val();
     notitie.cijfer = parseInt($('#cijfer').val());
-    Smaaknotities.insert(notitie);
+    console.log(notitie._id)
+    if (notitie._id == null || notitie._id == '') {
+      Smaaknotities.insert(notitie);
+    } else {
+      Smaaknotities.update({_id: notitie._id}, {$set : {
+        jaartal: notitie.jaartal,
+        kleur: notitie.kleur,
+        geur: notitie.geur,
+        smaak: notitie.smaak,
+        cijfer: notitie.cijfer
+      }});
+    }
   },
   'click button.cancel' : function() {
     // do nothing

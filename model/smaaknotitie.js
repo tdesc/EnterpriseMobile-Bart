@@ -1,5 +1,6 @@
 Smaaknotitie = function (object) {
   if (object) {
+    this._id = object._id
     this.wijn_id = object.wijn_id;
     this.user_id = object.user_id;
     this.jaartal = object.jaartal;

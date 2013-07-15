@@ -1,7 +1,7 @@
 <template name="wijn_details">
     <h2>{{selected_wijn.naam}}
       {{#if currentUser}}
-      &nbsp;<i class="icon-edit"> </i>
+      &nbsp;<i class="icon-edit editWijn"> </i>
       {{/if}}
     </h2>
     <dl class="dl-horizontal">
@@ -45,7 +45,7 @@
             <td>{{geur}}</td>
             <td>{{smaak}}</td>
             <td><span class="badge">{{cijfer}}</span></td>
-            <td><i class="icon-edit"> </i></td>
+            <td>{{#if isUser user_id}}<i class="icon-edit editNotitie"> </i>{{/if}}</td>
           </tr>
         {{/each}}
       </tbody>
