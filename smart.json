@@ -4,6 +4,7 @@
     "router": {},
     "transitioner": {},
     "momentjs": {},
-    "accounts-ui-bootstrap-dropdown": {}
+    "accounts-ui-bootstrap-dropdown": {},
+    "incr-csv": {}
   }
 }

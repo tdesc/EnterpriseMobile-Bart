@@ -27,3 +27,5 @@ if (Meteor.isClient) {
   
   moment.lang('nl');
 }
+
+Aromas = new Meteor.Collection("aromas");

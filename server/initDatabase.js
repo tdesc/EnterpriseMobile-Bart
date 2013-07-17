@@ -43,6 +43,36 @@ Meteor.startup(function () {
       }
     });
   }
+ 
+  function insertAroma(row) {
+    var Aroma = {
+      aroma: row[3],
+      nummer: row[2],
+      subcategorie: row[1],
+      categorie: row[0]
+    };
+    console.log(row[3] + ", " + row[2] + ", " + row[1] + ", " + row[0] )
+    Aromas.insert({aroma: row[3], nummer: row[2], subcategorie: row[1], categorie: row[0]});
+  }
+    
+  if (Aromas.find().count() === 0) {
+    console.log("Initializing Aromas collection...")
+    
+    csv = new IncrementalCSV({
+      quoteCharacter:  '"',   
+      fieldSeparator:  ';',  
+      recordSeparator: '\n',  
+      onRecord: function (row, index) {
+        insertAroma(row);
+      }
+    });
+    
+    var fs = Npm.require('fs');
+    csv.push(fs.readFileSync('server/wijnaromas.csv', 'utf8'));
+    csv.finish();
+  }
+  
+
   
   if (Landen.find().count() === 0) {
     Landen.insert({naam: "Algerije", code: "DZ"});
