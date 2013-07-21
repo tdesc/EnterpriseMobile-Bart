@@ -27,6 +27,17 @@ Template.wijn_details.notities = function() {
   return Smaaknotities.find({wijn_id: Session.get("selected_wijn")}).map(function(n){return new Smaaknotitie(n)});
 }
 
-Template.wijn_details.isUser = function(userId) {
+Template.notitie_regel.isUser = function(userId) {
   return userId != null && userId != '' && userId == Meteor.userId()
 };
+
+Template.notitie_regel.aromas = function() {
+  var data = ""
+  _.each(this.geur.split(","), function (nummer) {
+    var aroma = Aromas.findOne({nummer: nummer})
+    if (aroma != null) {
+      data += aroma.aroma + ", ";
+    }
+  });
+  return data.substring(0, data.length-2);
+}

@@ -37,17 +37,21 @@
       </thead>
       <tbody>
         {{#each notities}}
-          <tr>
-            <td>{{jaartal}}</td>
-            <td>{{datumLeesbaar}}</td>
-            <td>{{proever}}</td>
-            <td>{{kleur}}</td>
-            <td>{{geur}}</td>
-            <td>{{smaak}}</td>
-            <td><span class="badge">{{cijfer}}</span></td>
-            <td>{{#if isUser user_id}}<i class="icon-edit editNotitie"> </i>{{/if}}</td>
-          </tr>
+          {{> notitie_regel}}
         {{/each}}
       </tbody>
     </table>
+</template>
+
+<template name="notitie_regel">
+  <tr>
+    <td>{{jaartal}}</td>
+    <td>{{datumLeesbaar}}</td>
+    <td>{{proever}}</td>
+    <td>{{kleur}}</td>
+    <td>{{aromas}}</td>
+    <td>{{smaak}}</td>
+    <td><span class="badge">{{cijfer}}</span></td>
+    <td>{{#if isUser user_id}}<i class="icon-edit editNotitie"> </i>{{/if}}</td>
+  </tr>
 </template>
