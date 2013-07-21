@@ -5,6 +5,7 @@
     "transitioner": {},
     "momentjs": {},
     "accounts-ui-bootstrap-dropdown": {},
-    "incr-csv": {}
+    "incr-csv": {},
+    "select2": {},
   }
 }

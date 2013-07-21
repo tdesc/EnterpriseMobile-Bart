@@ -7,7 +7,9 @@
       "transitioner": {},
       "momentjs": {},
       "accounts-ui-bootstrap-dropdown": {},
-      "incr-csv": {}
+      "incr-csv": {},
+      "select2": {},
+      "bootstrap-less": {}
     },
     "packages": {
       "font-awesome": {
@@ -39,6 +41,16 @@
         "git": "https://github.com/jeffmitchel/meteor-incr-csv.git",
         "tag": "v0.2.4",
         "commit": "f9e6d649295fd471832d224f114f80a641114c2a"
+      },
+      "select2": {
+        "git": "https://github.com/nate-strauser/meteor-select2.git",
+        "tag": "v3.4.0",
+        "commit": "a731bdb357cadd840aa5d9a3e893ab3df097a09c"
+      },
+      "bootstrap-less": {
+        "git": "https://github.com/inhji/meteor-bootstrap-less",
+        "tag": "v0.0.2",
+        "commit": "a04086b7f86f1d3e8f58ab801b37d08c40688693"
       },
       "page-js-ie-support": {
         "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",
