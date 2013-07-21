@@ -1,8 +1,13 @@
 Template.edit_smaaknotitie.rendered = function() {
+
+  $('#datetimepicker').datetimepicker({
+    language: 'nl-NL'
+  });
+  var picker = $('#datetimepicker').data('datetimepicker');
+  picker.setLocalDate((Session.get("notitie").datum))
+  
    // TODO: why is normal binding not working here?
-   console.log(Session.get("notitie").geur)
    $('#geur').val(Session.get("notitie").geur)
-   console.log($("#geur").val())
    $("#geur").select2({
      multiple: true,
      query: function(query) {
@@ -33,6 +38,7 @@ Template.edit_smaaknotitie.events({
     notitie.geur = $('#geur').val();
     notitie.smaak = $('#smaak').val();
     notitie.cijfer = parseInt($('#cijfer').val());
+    notitie.datum = $('#datetimepicker').data('datetimepicker').getLocalDate();
     console.log(notitie._id)
     if (notitie._id == null || notitie._id == '') {
       Smaaknotities.insert(notitie);
@@ -42,7 +48,8 @@ Template.edit_smaaknotitie.events({
         kleur: notitie.kleur,
         geur: notitie.geur,
         smaak: notitie.smaak,
-        cijfer: notitie.cijfer
+        cijfer: notitie.cijfer,
+        datum: notitie.datum
       }});
     }
   },

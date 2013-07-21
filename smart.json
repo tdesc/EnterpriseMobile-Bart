@@ -7,5 +7,6 @@
     "accounts-ui-bootstrap-dropdown": {},
     "incr-csv": {},
     "select2": {},
+    "bootstrap-datetimepicker": {}
   }
 }

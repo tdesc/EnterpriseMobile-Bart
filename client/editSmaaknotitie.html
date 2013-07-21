@@ -10,7 +10,13 @@
       <div class="control-group">
         <label class="control-label" for="datum">Datum:</label>
         <div class="controls">
-          <span class="input-xlarge uneditable-input">{{notitie.datum}}</span>
+          <div id="datetimepicker" class="input-append date">
+            <input data-format="dd-MM-yyyy hh:mm:ss" type="text" id="datum">{{notitie.datum}}</input>
+            <span class="add-on">
+              <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+              </i>
+            </span>
+          </div>
         </div>
       </div>
       <div class="control-group">
