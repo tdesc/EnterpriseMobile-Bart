@@ -1,7 +1,8 @@
 Template.edit_smaaknotitie.rendered = function() {
 
   $('#datetimepicker').datetimepicker({
-    language: 'nl-NL'
+    language: 'nl-NL',
+    endDate: new Date()
   });
   var picker = $('#datetimepicker').data('datetimepicker');
   picker.setLocalDate((Session.get("notitie").datum))
