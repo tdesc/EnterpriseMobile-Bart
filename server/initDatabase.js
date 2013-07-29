@@ -3,7 +3,7 @@ Meteor.startup(function () {
     console.log("Oude smaaknotities weggooien")
     Smaaknotities.remove({})
     console.log("Wijnen toevoegen...")
-    var wijnen = [
+    /*var wijnen = [
       new Wijn({naam:"Bodegas Dolor de Cabeza", appellatie:"Rueda D.O.", streek:"Rueda", land:"Spanje", druif:"Verdejo", kleur:"wit", soort:"Olé"}),
       new Wijn({naam:"Château Migraine", appellatie:"Appellation Gueule de Bois Controlée", streek:"Gueule de Bois", land:"Frankrijk", druif:"Chardonnay", kleur:"wit", soort:"Hoofdpijnwijn"}),
       new Wijn({naam:"De Hoofdpijnhoeve", appellatie:"Achterhoekse Oorsprong", streek:"Gelderland", land:"Nederland", druif:"Merlot", kleur:"rosé", soort:"Soort"}),
@@ -11,15 +11,20 @@ Meteor.startup(function () {
       new Wijn({naam:"Kaap die Houten Kop", appellatie:"Olifantshoek", streek:"Noordkaap", land:"Zuid-Afrika", druif:"Shiraz", kleur:"rood", soort:"Zwaar"}),
       new Wijn({naam:"Maux de Tête Villages", appellatie:"Appellation Henrique Strabique", streek:"Loucher", land:"Frankrijk", druif:"Merlot", kleur:"rood", soort:"De kater komt later"}),
       new Wijn({naam:"Hangover's Bin", appellatie:"Headache Hills", streek:"Headache Hills", land:"Australië", druif:"Pinot Noir", kleur:"rood", soort:"Heavy stuff"})];
+      */
+    var csvWijnen = Meteor.http.get("http://54.217.219.195/wijn4.csv");
+    console.log(csvWijnen.headers);
+    var wijnen = csvWijnen.content.split("\n");
     for (var i = 0; i < wijnen.length; i++) {
-      console.log("   Toevoegen wijn " + i + " van " + wijnen.length);
-      console.log(wijnen[i])
-      var result = Wijnen.insert(wijnen[i]);
-      console.log(result);
+      console.log(wijnen[i]);
+      var wijn = (wijnen[i].replace(/"/g,'').split(","));
+      console.log(wijn);
+      var result = Wijnen.insert({naam: wijn[4], appellatie: wijn[2], streek: wijn[1], land: wijn[0], druif: wijn[5], kleur: wijn[6], soort: wijn[7], classificatie: wijn[3]});
+      console.log("   Wijn " + i + " van " + wijnen.length + " toegevoegd: " + result + ", " + wijn[4]);
     }
   }
   
-  if (Smaaknotities.find().count() === 0) {
+  if (Smaaknotities.find().count() === 0 && false) {
     console.log("Smaaknotities toevoegen...")
     var aUserId;
     if (Meteor.users.find().count() > 0) {

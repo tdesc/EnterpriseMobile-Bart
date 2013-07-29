@@ -7,14 +7,13 @@ Template.wijn_details.events({
     console.log(this)
     Meteor.Router.to('/bewerkNotitie');
   },
-  'click button.new' : function() {
+  'click button.new' : function(event) {
     var n = new Smaaknotitie();
     n.init(Session.get("selected_wijn"));
     Session.set("notitie", n);
     Meteor.Router.to('/bewerkNotitie');
-    stopPropagation();
   },
-  'click button' : function() {
+  'click button.cancel' : function() {
     Meteor.Router.to('/wijnen');
   }
 });

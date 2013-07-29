@@ -1,17 +1,6 @@
+
 Template.wijnen.wijnen = function () {
-  query = Template.wijnapp.search_query();
-  if (!query) {
-    return Wijnen.find({}, {sort: {naam: 1}});
-  } else {
-    return Wijnen.find({ $or: [
-       {naam: {$regex: query}},
-       {appellatie: {$regex: query}}, 
-       {streek: {$regex: query}}, 
-       {land: {$regex: query}}, 
-       {druif: {$regex: query}}, 
-       {soort: {$regex: query}}
-      ]}, {sort: {naam: 1}});
-  }
+  return Wijnen.find();
 };
 
 Template.wijn.selected = function () {
