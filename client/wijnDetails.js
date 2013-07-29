@@ -22,6 +22,14 @@ Template.wijn_details.selected_wijn = function() {
   return new Wijn(Wijnen.findOne(Session.get("selected_wijn")));  
 }
 
+Template.wijn_details.aantal_notities = function() {
+  return Smaaknotities.find({wijn_id: Session.get("selected_wijn")}).count();
+}
+
+Template.wijn_details.gemiddeld_cijfer = function() {
+  return 0; // TODO
+}
+
 Template.wijn_details.notities = function() {
   return Smaaknotities.find({wijn_id: Session.get("selected_wijn")}).map(function(n){return new Smaaknotitie(n)});
 }
