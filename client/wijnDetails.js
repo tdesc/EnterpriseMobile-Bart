@@ -27,7 +27,13 @@ Template.wijn_details.aantal_notities = function() {
 }
 
 Template.wijn_details.gemiddeld_cijfer = function() {
-  return 0; // TODO
+  var aantal = 0;
+  var totaal = 0;
+  Smaaknotities.find({wijn_id: Session.get("selected_wijn")}).forEach(function(notitie) {
+    aantal = aantal + 1;
+    totaal = totaal + notitie.cijfer;
+  })
+  return (totaal/aantal).toFixed(2);
 }
 
 Template.wijn_details.notities = function() {
