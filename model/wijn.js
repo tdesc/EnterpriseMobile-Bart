@@ -1,40 +1,53 @@
-/*Wijn = function(naam, appellatie, streek, land, druif, kleur, soort) {
-  this.naam = naam;
-  this.appellatie = appellatie;
-  this.streek = streek;
-  this.land = land;
-  this.druif = druif;
-  this.kleur = kleur;
-  this.soort = soort;
-}*/
-
+/**
+ * Wijn constructor
+ */
 Wijn = function (object) {
-  if (object) {
-    this.naam = object.naam;
-    this.appellatie = object.appellatie;
-    this.streek = object.streek;
-    this.land = object.land;
-    this.druif = object.druif;
-    this.kleur = object.kleur;
-    this.soort = object.soort;
+  _.extend(this, object)
+}
+
+/**
+ * Wijn class definition
+ */
+_.extend(Wijn.prototype, {
+  toString: function() {
+      return "Wijn {naam: "+this.naam + ", land:" + this.land + "}";
   }
-}
+});
 
-Wijn.prototype.fromQueryResult = function (object) {
-  if (object) {
-    this.naam = object.naam;
-    this.appellatie = object.appellatie;
-    this.streek = object.streek;
-    this.land = object.land;
-    this.druif = object.druif;
-    this.kleur = object.kleur;
-    this.soort = object.soort;
+/**
+ * Wijnen collection
+ */
+Wijnen = new Meteor.Collection("wijnen", {
+  transform: function(doc) {
+    return new Wijn(doc); 
   }
+});
+
+Wijnen.allow({
+  update: function (userId, docs, fields, modifier) {
+    return userId
+  }
+});
+
+if (Meteor.isServer) {
+  Meteor.publish("wijnen", function(query) {
+    if (!query) {
+      return Wijnen.find({}, {sort: {naam: 1}, limit: 10});
+    } else {
+      return Wijnen.find({ $or: [
+         {naam: {$regex: query}},
+         {appellatie: {$regex: query}}, 
+         {streek: {$regex: query}}, 
+         {land: {$regex: query}}, 
+         {druif: {$regex: query}}, 
+         {soort: {$regex: query}}
+        ]}, {sort: {naam: 1}, limit: 10});
+    }
+  });
 }
 
-Wijn.prototype.toString = function() {
-    return "Wijn {naam: "+this.naam + ", land:" + this.land + "}";
+if (Meteor.isClient) {
+  Deps.autorun(function() {
+    Meteor.subscribe("wijnen", Template.wijnapp.search_query());
+  });
 }
-
-
-

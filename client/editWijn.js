@@ -19,7 +19,7 @@ Template.edit_wijn.events({
 });
 
 Template.edit_wijn.selected_wijn = function () {
-  return new Wijn(Wijnen.findOne(Session.get("selected_wijn")));
+  return Wijnen.findOne(Session.get("selected_wijn"));
 };
 Template.edit_wijn.rendered = function () {
   return $('#land').typeahead({

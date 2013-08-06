@@ -19,7 +19,7 @@ Template.wijn_details.events({
 });
 
 Template.wijn_details.selected_wijn = function() {
-  return new Wijn(Wijnen.findOne(Session.get("selected_wijn")));  
+  return Wijnen.findOne(Session.get("selected_wijn"));  
 }
 
 Template.wijn_details.aantal_notities = function() {
@@ -37,7 +37,7 @@ Template.wijn_details.gemiddeld_cijfer = function() {
 }
 
 Template.wijn_details.notities = function() {
-  return Smaaknotities.find({wijn_id: Session.get("selected_wijn")}).map(function(n){return new Smaaknotitie(n)});
+  return Smaaknotities.find({wijn_id: Session.get("selected_wijn")})
 }
 
 Template.notitie_regel.isUser = function(userId) {
