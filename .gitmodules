@@ -1,0 +1,3 @@
+[submodule "packages/meteor-bootstrap-slider"]
+	path = packages/meteor-bootstrap-slider
+	url = git@github.com:nate-strauser/meteor-bootstrap-slider.git

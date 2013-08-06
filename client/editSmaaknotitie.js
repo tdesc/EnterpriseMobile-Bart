@@ -1,5 +1,7 @@
 Template.edit_smaaknotitie.rendered = function() {
-
+  
+  $('.slider').slider({value: Session.get("notitie").cijfer});
+  
   $('#datetimepicker').datetimepicker({
     language: 'nl-NL',
     endDate: new Date()
@@ -38,7 +40,7 @@ Template.edit_smaaknotitie.events({
     notitie.kleur = $('#kleur').val();
     notitie.geur = $('#geur').val();
     notitie.smaak = $('#smaak').val();
-    notitie.cijfer = parseInt($('#cijfer').val());
+    notitie.cijfer = parseFloat($('#cijfer-slider').val());
     notitie.datum = $('#datetimepicker').data('datetimepicker').getLocalDate();
     console.log(notitie._id)
     if (notitie._id == null || notitie._id == '') {
