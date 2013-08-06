@@ -32,7 +32,7 @@ Wijnen.allow({
 if (Meteor.isServer) {
   Meteor.publish("wijnen", function(query) {
     if (!query) {
-      return Wijnen.find({}, {sort: {naam: 1}, limit: 10});
+      return Wijnen.find({naam: {$exists: true, $ne: null, $ne: ""}}, {sort: {naam: 1}, limit: 10});
     } else {
       return Wijnen.find({ $or: [
          {naam: {$regex: query}},
