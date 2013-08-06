@@ -34,7 +34,9 @@ if (Meteor.isServer) {
     if (!query) {
       return Wijnen.find({naam: {$exists: true, $ne: null, $ne: ""}}, {sort: {naam: 1}, limit: 10});
     } else {
-      return Wijnen.find({ $or: [
+      return Wijnen.find({
+         naam: {$exists: true, $ne: null, $ne: ""},
+         $or: [
          {naam: {$regex: query}},
          {appellatie: {$regex: query}}, 
          {streek: {$regex: query}}, 
