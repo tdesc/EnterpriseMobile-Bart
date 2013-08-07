@@ -4,6 +4,16 @@ Meteor.startup = function() {
   }
 };
 
+Template.wijnapp.rendered = function() {
+  $('form input').keydown(function(event){
+     if(event.keyCode == 13) {
+       $('form input').blur();
+       event.preventDefault();
+       return false;
+     }
+   });
+ }
+
 Template.wijnapp.events({
   'blur input#search-query' : function(event) {
     Session.set("search_query", $("#search-query").val());
