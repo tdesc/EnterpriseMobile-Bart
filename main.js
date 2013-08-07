@@ -1,7 +1,19 @@
+if (Meteor.isServer) {
+  Meteor.publish('users-by-selector', function(options) {
+    return Meteor.users.find(options, {
+      fields: {
+        username: 1,
+        profile: 1
+      }
+    });
+  });
+}
 
-
-
-
+if (Meteor.isClient) {
+  Meteor.autosubscribe(function() {
+    return Meteor.subscribe('users-by-selector', {});
+  });
+}
 
 // Landen
 Landen = new Meteor.Collection("landen");
