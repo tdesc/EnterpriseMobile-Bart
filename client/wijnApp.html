@@ -4,25 +4,29 @@
         <a class="brand" href="#"><i class="icon-glass"> </i>Maikel’s wijnkelder</a>
         
         {{ loginButtons }}
-        <form class="navbar-search pull-right hidden-phone" id="search_form">
-          <i class="icon-search"></i>
-          <input id="search-query" type="text" class="span2 search-query" 
-                 value="{{search_query}}" placeholder="Zoekterm" />
-          <i class="icon-remove-sign"></i>
-        </form>            
+        {{#if showSearch}}
+          <form class="navbar-search pull-right hidden-phone" id="search_form">
+            <i class="icon-search"></i>
+            <input id="search-query" type="text" class="span2 search-query" 
+                   value="{{search_query}}" placeholder="Zoekterm" />
+            <i class="icon-remove-sign"></i>
+          </form>            
+        {{/if}}
       </div>
     </div>
 
-    <div class="visible-phone">
-      <form id="search_form" class="search">
-        <div class="text-center">
-          <i class="icon-search"> </i>
-          <input id="search-query" type="text" class="search-query" 
-                 value="{{search_query}}" placeholder="Zoekterm" />
-          <i class="icon-remove-sign"> </i>
-        </div>
-      </form>            
-    </div>
+    {{#if showSearch}}
+      <div class="visible-phone">
+        <form id="search_form" class="search">
+          <div class="text-center">
+            <i class="icon-search"> </i>
+            <input id="search-query" type="text" class="search-query" 
+                   value="{{search_query}}" placeholder="Zoekterm" />
+            <i class="icon-remove-sign"> </i>
+          </div>
+        </form>            
+      </div>
+    {{/if}}
     {{#isolate}} {{renderPage}} {{/isolate}}
   
 </template>

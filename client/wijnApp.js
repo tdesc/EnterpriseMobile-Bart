@@ -30,6 +30,10 @@ Template.wijnapp.pagina = function() {
   return Meteor.Router.page();
 }
 
+Template.wijnapp.showSearch = function() {
+  return Meteor.Router.page() == "wijnen"
+}
+
 Template.wijnapp.search_query = function() {
   return Session.get("search_query");
 }
