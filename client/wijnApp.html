@@ -1,27 +1,27 @@
 <template name="wijnapp">
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
-        <div class="container">
-          <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <i class="icon-reorder"> </i>
-          </a>
-
-          <!-- Be sure to leave the brand out there if you want it shown -->
-          <a class="brand" href="#"><i class="icon-glass"> </i>Maikel’s wijnkelder</a>
-          
-          <!-- Everything you want hidden at 940px or less, place within here -->
-          <div class="nav-collapse collapse">
-            {{ loginButtons }}
-            <form class="navbar-search pull-right" id="search_form">
-              <i class="icon-search"></i>
-              <input id="search-query" type="text" class="span2 search-query" 
-                     value="{{search_query}}" placeholder="Zoekterm" />
-              <i class="icon-remove-sign"></i>
-            </form>            
-          </div>
-        </div>
+        <a class="brand" href="#"><i class="icon-glass"> </i>Maikel’s wijnkelder</a>
+        
+        {{ loginButtons }}
+        <form class="navbar-search pull-right hidden-phone" id="search_form">
+          <i class="icon-search"></i>
+          <input id="search-query" type="text" class="span2 search-query" 
+                 value="{{search_query}}" placeholder="Zoekterm" />
+          <i class="icon-remove-sign"></i>
+        </form>            
       </div>
+    </div>
+
+    <div class="visible-phone">
+      <form id="search_form" class="search">
+        <div class="text-center">
+          <i class="icon-search"> </i>
+          <input id="search-query" type="text" class="search-query" 
+                 value="{{search_query}}" placeholder="Zoekterm" />
+          <i class="icon-remove-sign"> </i>
+        </div>
+      </form>            
     </div>
     {{#isolate}} {{renderPage}} {{/isolate}}
   
